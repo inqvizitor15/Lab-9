@@ -1,11 +1,25 @@
 <html>
 <head>
     <title> Cities </title>
+    <script type="text/javascript" src="/static/update.js"></script>
 </head>
 
 <body>
 <h1> Add new city! </h1>
+<form>
+    <div>
+        <input type = 'text' name="totravel" id="totravel">
+        <label for="totravel">TOTRAV</label>
+    </div>
+        <input type = "date" name="date" id="date">
+        <label for="date">Дата</label>
+        <div>
+            <button onclick="createCity()">
+                Добавить
+            </button>
+        </div>
 
+</form>
 <ul>
     {% for city in cities %}
     <li>
@@ -16,8 +30,8 @@
             <div>
                 {{city['visit_date']}}
             </div>
-            <input type="checkbox" {% if city.ready %} checked {% endif %}>
-            <label for="ready"> Готово </label>
+            <input value="{{city['id']}}" onChange="updateCity(this)" name="ready" type="checkbox" {% if city.ready %} checked {% endif %}>
+            <label for="ready">Готово</label>
         </div>
     </li>
     {% endfor%}

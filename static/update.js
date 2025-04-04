@@ -1,22 +1,36 @@
-function updateProd(el) {
+function updateCity(el) {
     product_id = el.value
-    fetch('/in_stock/' + product_id, {
+    fetch('/ready/' + product_id, {
         method: 'patch',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({'in_stock': el.checked})
+        body: JSON.stringify({'ready': el.checked})
     })
-    console.log(product_id)
+//    console.log(product_id)
+
 }
 
-function addProduct() {
-    let prodName = document.getElementById('prod_name').value
-    let price = document.getElementById('price').value
-    fetch('/add', {
+//function addProduct() {
+//    let prodName = document.getElementById('prod_name').value
+//    let price = document.getElementById('price').value
+//    fetch('/add', {
+//        method: 'post',
+//        headers: {'Content-Type': 'application/json'},
+//        body: JSON.stringify({'prod_name': prodName,
+//                             'price': price,
+//                             'in_stock': true})
+//    })
+////    console.log("Add")
+//}
+
+function createCity(){
+    console.log('Create')
+    let totravel = document.getElementByld('totravel').value
+    let date = document.getElementByld('date').value
+
+    fetch('/city', {
         method: 'post',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({'prod_name': prodName,
-                             'price': price,
-                             'in_stock': true})
+        body: JSON.stringify({'totravel': totravel || 'Пустое', \
+                            'date': date || '15.10.2006', 'ready': false})
     })
-//    console.log("Add")
 }
