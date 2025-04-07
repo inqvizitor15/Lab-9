@@ -19,7 +19,7 @@ function createCity(){
                             'visit_date': date || '15.10.2006'})
     })
 
-    // Новая часть от гпт
+    // Должно было решить проблему, но нет
     .then(response => {
         if (!response.ok) {
             throw new Error('Ошибка при сохранении города');
@@ -31,7 +31,7 @@ function createCity(){
             console.log('Город успешно сохранён');
             setTimeout(() => {
                 location.reload(); // Немного подождать и обновить страницу
-            }, 200); // 200 мс — достаточно для завершения записи в SQLite
+            }, 200);
         } else {
             console.error('Ответ сервера некорректен:', data);
         }

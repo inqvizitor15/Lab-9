@@ -1,4 +1,3 @@
-import requests
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -8,6 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///project.db"
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+# Решил оставить для наглядности, если в будущем данный проект мне понадобится
 # towns = [
 #     {'town': 'Moscow',
 #      'visit_date':'12.12.2012',
@@ -33,13 +33,14 @@ class City(db.Model):
     # def __repr__(self):
     #     return f'<City {self.id} / {self.town}> {self.visit_date}'
 
-@app.route('/') # обработчик, что то возвращающий на главную страницу
+@app.route('/')
 def main():
     towns = City.query.all()
     print(towns)
     return render_template('index.html',
                            cities=towns)
 
+# Для чекбоксов
 # @app.route('/ready/<int:city_id>', methods=['PATCH'])
 # def modify_city(city_id):
 #     towns = City.query.get(city_id)
