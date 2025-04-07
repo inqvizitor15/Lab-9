@@ -2,41 +2,44 @@
 <head>
     <title> Cities </title>
     <script type="text/javascript" src="/static/update.js"></script>
-</head>
+    <link href="/static/store.css" rel="stylesheet">
+    </head>
 
-<body>
-<h1> Add new city! </h1>
-<form>
-    <div>
-        <input type = 'text' name="totravel" id="totravel">
-        <label for="totravel">TOTRAV</label>
-    </div>
-        <input type = "date" name="date" id="date">
-        <label for="date">Дата</label>
-        <div>
-            <button onclick="createCity()">
-                Добавить
-            </button>
-        </div>
-
-</form>
-<ul>
-    {% for city in cities %}
-    <li>
-        <div>
+    <body>
+        <h1> Добавь новый город! </h1>
+        <form>
             <div>
-                {{city['town']}}
+                <input type='text' name="totravel" id="totravel">
+                <label for="totravel">TOTRAV</label>
             </div>
-            <div>
-                {{city['visit_date']}}
-            </div>
-            <input value="{{city['id']}}" onChange="updateCity(this)" name="ready" type="checkbox" {% if city.ready %} checked {% endif %}>
-            <label for="ready">Готово</label>
+                <input type="date" name="datE" id="datE">
+                <label for="datE">Дата</label>
+                <div>
+                    <button onclick="createCity()">
+                        Добавить
+                    </button>
+                </div>
+
+        </form>
+        <div>
+            <button type="button" onclick="clearCities()">Очистить</button>
         </div>
-    </li>
-    {% endfor%}
-</ul>
+        <ul>
+            {% for city in cities %}
+            <li class="city-card">
+                <div>
+<!--                    <li class="city-card">-->
 
-</body>
+                    <div>{{ city['town']}}</div>
+                    <div>{{ city['visit_date']}}</div>
 
+<!--                    </li>-->
+
+<!--                   <input value="{{city['id']}}" onChange="updateCity(this)" name='ready' type="checkbox" {% if city.ready %} checked {% endif %}/>-->
+<!--                   <label for="ready">Готово</label>-->
+                </div>
+            </li>
+            {% endfor%}
+        </ul>
+    </body>
 </html>

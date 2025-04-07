@@ -1,4 +1,37 @@
-li {
+ul {
+    list-style-type: "📍"
+}
+
+/*li {
     margin-bottom: 10px;
+    border: solid #ca2222 1px;
     padding: 10px;
 }
+*/
+
+
+body {
+    background-color: #ffeb3b69;
+
+}
+
+/* Центрируем блок со списком */
+#city-list {
+
+
+}
+
+/* Стили для каждой карточки города */
+.city-card {
+    margin: 30px;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 35%;                         /* Ширина карточки */
+    border: 1px solid #ccc;         /* Добавляет тонкую серую рамку вокруг карточки. */
+    border-radius: 12px;            /* Скругляет углы рамки на 12 пикселей */
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
