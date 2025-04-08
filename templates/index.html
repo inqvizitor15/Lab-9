@@ -7,7 +7,10 @@
 
     <body>
         <h1> Добавьте новый город! </h1>
-        <form>
+
+
+
+        <form onsubmit="createCity(event)">
             <div>
                 <input type='text' name="totravel" id="totravel">
                 <label for="totravel">TOTRAV</label>
@@ -18,9 +21,13 @@
                     <button onclick="createCity()">
                         Добавить
                     </button>
-                </div>
+            </div>
 
         </form>
+
+
+
+
         <div>
             <button type="button" onclick="clearCities()">Очистить</button>
         </div>

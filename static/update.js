@@ -7,40 +7,32 @@
 //    })
 //}
 
-function createCity(){
-    console.log('Create')
-    let totravel = document.getElementById('totravel').value
-    let date = document.getElementById('datE').value
+
+function createCity(event) {
+    event.preventDefault(); // Отключает стандартную отправку формы
+
+    let totravel = document.getElementById('totravel').value;
+    let date = document.getElementById('datE').value;
 
     fetch('/city', {
-        method: 'post',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({'town': totravel || 'Пустое',
-                            'visit_date': date || '15.10.2006'})
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            town: totravel || 'Пустое',
+            visit_date: date || '15.10.2006'
+        })
     })
-
-    // Должно было решить проблему, но нет
     .then(response => {
-        if (!response.ok) {
-            throw new Error('Ошибка при сохранении города');
-        }
-        return response.json(); // Ждём JSON-ответ от сервера
+        if (!response.ok) throw new Error('Ошибка при сохранении');
+        return response.text();
     })
-    .then(data => {
-        if (data.status === 'success') {
-            console.log('Город успешно сохранён');
-            setTimeout(() => {
-                location.reload(); // Немного подождать и обновить страницу
-            }, 200);
-        } else {
-            console.error('Ответ сервера некорректен:', data);
-        }
+    .then(() => {
+        setTimeout(() => location.reload(), 200); // даём SQLite немного времени
     })
     .catch(error => {
         console.error('Ошибка при добавлении города:', error);
     });
 }
-
 function clearCities() {
     fetch('/clear', {
         method: 'DELETE'
